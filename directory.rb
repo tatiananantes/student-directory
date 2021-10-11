@@ -1,5 +1,4 @@
-
-# changing to students array
+# Academy students
 students = [
     "Dr. Hannibal Lecter",
     "Darth Vader",
@@ -13,11 +12,23 @@ students = [
     "Joffrey Baratheon",
     "Norman Bates"
   ]
-# print them through indexes 
-puts "The students of Villains Academy"
-puts "-------------"
-students.each do |student|
-    puts student
+
+def print_header
+  puts "The students of Villains Academy"
+  puts "-------------"
 end
 
-puts "Overall, we have #{students.count} great students"
+def print(names)
+  names.each do |name|
+    puts name
+  end
+end
+
+def print_footer(names)
+  puts "Overall, we have #{names.count} great students"
+end
+
+# calling the methods
+print_header
+print(students)
+print_footer(students)
