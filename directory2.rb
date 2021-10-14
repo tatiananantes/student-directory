@@ -1,7 +1,9 @@
 
 def input_students
-  puts "Please enter the names of the students"
+  puts "Please enter the names of the student"
   name = gets.chomp
+  puts "Please enter student cohort"
+  cohort = gets.chomp
   puts "Please enter their hobbie"
   hobbie = gets.chomp
   puts "Please enter their nationality"
@@ -11,16 +13,18 @@ def input_students
 students = []
 
   while !name.empty? do
-    students << {name: name, hobbie: hobbie, nationality: nationality, cohort: :november}
+    students << {name: name, hobbie: hobbie, nationality: nationality, cohort: cohort}
     puts "Now we have #{students.count} students"
     # get more names
     puts "Please enter the names of the students"
-  name = gets.chomp
-  puts "Please enter their hobbie"
-  hobbie = gets.chomp
-  puts "Please enter their nationality"
-  nationality = gets.chomp
-  puts "to finish just hit return twice"
+    name = gets.chomp
+    puts "Please enter student cohort"
+    cohort = gets.chomp.to_sym
+    puts "Please enter their hobbie"
+    hobbie = gets.chomp
+    puts "Please enter their nationality"
+    nationality = gets.chomp
+    puts "to finish just hit return twice"
   end
   students
 end
@@ -40,7 +44,7 @@ end
 def print(students)
   count = 0
   while count < students.length
-    puts "#{students[count][:name].center(15)}, #{students[count][:hobbie].center(15)}, #{students[count][:nationality].center(15)}, (#{students[count][:cohort]} cohort)"
+    puts "#{students[count][:name].center(15)}, #{students[count][:hobbie].center(15)}, #{students[count][:nationality].center(8)}, #{students[count][:cohort]} cohort"
     count += 1
   end
 end
