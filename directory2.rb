@@ -3,7 +3,7 @@ def input_students
   puts "Please enter the names of the student"
   name = gets.chomp
   puts "Please enter student cohort"
-  cohort = gets.chomp
+  cohort = gets.chomp.to_sym
   puts "Please enter their hobbie"
   hobbie = gets.chomp
   puts "Please enter their nationality"
@@ -16,7 +16,7 @@ students = []
     students << {name: name, hobbie: hobbie, nationality: nationality, cohort: cohort}
     puts "Now we have #{students.count} students"
     # get more names
-    puts "Please enter the names of the students"
+    puts "Please enter the name of the students"
     name = gets.chomp
     puts "Please enter student cohort"
     cohort = gets.chomp.to_sym
@@ -41,12 +41,24 @@ end
 #   end
 # end
 
+# def print(students)
+#   count = 0
+#   while count < students.length
+#     puts "#{students[count][:name].center(15)}, #{students[count][:hobbie].center(15)}, #{students[count][:nationality].center(8)}, #{students[count][:cohort]} cohort"
+#     count += 1
+#   end
+# end
+
 def print(students)
-  count = 0
-  while count < students.length
-    puts "#{students[count][:name].center(15)}, #{students[count][:hobbie].center(15)}, #{students[count][:nationality].center(8)}, #{students[count][:cohort]} cohort"
-    count += 1
-  end
+  students_by_cohort = {}
+  students.each do |student|
+    cohort = student[:cohort]
+    if students_by_cohort[cohort] == nil
+      students_by_cohort[cohort] = []
+    end
+      students_by_cohort[cohort].push(student[:name])
+    end
+  puts students_by_cohort
 end
 
 def print_footer(students)
